@@ -1,0 +1,3 @@
+# Error
+
+Represent errors.
