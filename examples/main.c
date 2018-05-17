@@ -51,7 +51,7 @@ ErrorOf(Ok, OutOfMemoryError, TooLongError) SmallString_new(char **destination, 
 
 int main() {
     char *smallString = NULL;
-    const Error error = SmallString_new(&smallString, Error_version());
+    const Error error = SmallString_new(&smallString, "Hello world!");
 
     if (error == Ok) {
         printf("Value: %s\n", smallString);
