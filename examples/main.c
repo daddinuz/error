@@ -27,35 +27,25 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <assert.h>
 #include <error.h>
 
-const Error OutOfMemoryError = Error_new("Out of memory");
-const Error TooLongError = Error_new("Too long");
-
-ErrorOf(Ok, OutOfMemoryError, TooLongError) SmallString_new(char **destination, const char *literal) {
-    assert(destination);
-    assert(literal);
-    char *temporary;
-    if (strlen(literal) > 32) {
-        return TooLongError;
+Error div(int a, int b, int *out) {
+    if (NULL == out) {
+        return DomainError;
+    } else if (0 == b) {
+        return MathError;
+    } else {
+        *out = a / b;
+        return Ok;
     }
-    if (!(temporary = strdup(literal))) {
-        return OutOfMemoryError;
-    }
-    *destination = temporary;
-    return Ok;
 }
 
 int main() {
-    char *smallString = NULL;
-    const Error error = SmallString_new(&smallString, "Hello world!");
+    int result = 0;
+    Error error = div(5, 0, &result);
 
-    if (error == Ok) {
-        printf("Value: %s\n", smallString);
-        free(smallString);
+    if (Ok == error) {
+        printf("Result: %d\n", result);
     } else {
         printf("Error: %s\n", Error_explain(error));
     }

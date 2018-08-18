@@ -38,10 +38,10 @@ extern "C" {
 
 #define ERROR_VERSION_MAJOR       0
 #define ERROR_VERSION_MINOR       2
-#define ERROR_VERSION_PATCH       0
+#define ERROR_VERSION_PATCH       1
 #define ERROR_VERSION_SUFFIX      ""
 #define ERROR_VERSION_IS_RELEASE  0
-#define ERROR_VERSION_HEX         0x000200
+#define ERROR_VERSION_HEX         0x000201
 
 /**
  * Represents errors that may occur at runtime.
@@ -52,7 +52,7 @@ extern "C" {
  *  This type must be treated as opaque therefore its members should never be accessed directly.
  */
 typedef struct __Error {
-    const char *__message;
+    const char *const __message;
 } const *Error;
 
 /**
@@ -86,12 +86,17 @@ __attribute__((__warn_unused_result__, __nonnull__));
 /**
  * The Ok Error instance to notify a successful execution.
  */
-extern const Error Ok;
+extern Error Ok;
 
 /**
  * Some error instances
  */
-extern const Error OutOfMemory;
+extern Error DomainError;         // Indicate that a function has been passed illegal or inappropriate arguments
+extern Error IllegalStateError;   // A function has been invoked at an illegal or inappropriate time
+extern Error LookupError;         // A key or index used on a mapping or sequence is invalid
+extern Error MathError;           // Arithmetic errors e.g. zero division
+extern Error OutOfMemory;         // The app ran out of memory
+extern Error SystemError;         // System-related errors e.g. file not found
 
 #ifdef __cplusplus
 }

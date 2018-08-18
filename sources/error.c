@@ -34,5 +34,10 @@ const char *Error_explain(Error self) {
     return self->__message;
 }
 
-const Error Ok = Error_new("Ok");
-const Error OutOfMemory = Error_new("Out of memory");
+Error Ok = Error_new("Ok");
+Error DomainError = Error_new("Domain error");
+Error IllegalStateError = Error_new("Illegal state error");
+Error LookupError = Error_new("Lookup error");
+Error MathError = Error_new("Math error");
+Error OutOfMemory = Error_new("Out of memory");
+Error SystemError = Error_new("System error");
