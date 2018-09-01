@@ -35,12 +35,12 @@ __attribute__(...)
 extern "C" {
 #endif
 
-#define ERROR_VERSION_MAJOR         0
-#define ERROR_VERSION_MINOR         3
+#define ERROR_VERSION_MAJOR         1
+#define ERROR_VERSION_MINOR         0
 #define ERROR_VERSION_PATCH         0
 #define ERROR_VERSION_SUFFIX        ""
 #define ERROR_VERSION_IS_RELEASE    0
-#define ERROR_VERSION_HEX           0x000300
+#define ERROR_VERSION_HEX           0x010000
 
 /**
  * Represents errors that may occur at runtime.
