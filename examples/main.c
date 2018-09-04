@@ -28,23 +28,23 @@ OTHER DEALINGS IN THE SOFTWARE.
 #include <stdio.h>
 #include <error.h>
 
-Error div(const int a, const int b, int *const out) {
+Error divide(const double dividend, const double divisor, double *const out) {
     if (NULL == out) {
-        return DomainError;
-    } else if (0 == b) {
+        return NullReferenceError;
+    } else if (0 == divisor) {
         return MathError;
     } else {
-        *out = a / b;
+        *out = dividend / divisor;
         return Ok;
     }
 }
 
 int main() {
-    int result = 0;
-    Error error = div(5, 0, &result);
+    double result = 0;
+    Error error = divide(5, 0, &result);
 
     if (Ok == error) {
-        printf("Result: %d\n", result);
+        printf("Result: %f\n", result);
     } else {
         printf("Error: %s\n", Error_explain(error));
     }
