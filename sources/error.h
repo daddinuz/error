@@ -82,15 +82,16 @@ __attribute__((__warn_unused_result__, __nonnull__));
 /**
  * Built-in errors
  */
-extern Error Ok;                // Notifies a successful execution.
-extern Error DomainError;       // Indicates that a function has been passed illegal or inappropriate arguments
-extern Error IllegalState;      // A function has been invoked at an illegal or inappropriate time
-extern Error LookupError;       // A key or index used on a mapping or sequence is invalid
-extern Error MathError;         // Arithmetic errors e.g. zero division
-extern Error MemoryError;       // Memory related error, e.g. overlapping memory. Note: should not be used to notify OOM
-extern Error OutOfMemory;       // The app ran out of memory
-extern Error SystemError;       // System-related errors e.g. file not found
-extern Error StopIteration;     // Indicates that the end of a sequence has been reached
+extern Error Ok;                    // Notifies a successful execution.
+extern Error DomainError;           // Indicates that a function has been passed illegal or inappropriate arguments
+extern Error IllegalState;          // A function has been invoked at an illegal or inappropriate time
+extern Error LookupError;           // A key or index used on a mapping or sequence is invalid
+extern Error MathError;             // Arithmetic errors e.g. zero division
+extern Error MemoryError;           // Memory related error, e.g. overlapping memory. Note: should not be used to notify OOM
+extern Error NullReferenceError;    // Got a null reference where is not allowed.
+extern Error OutOfMemory;           // The app ran out of memory
+extern Error SystemError;           // System-related errors e.g. file not found
+extern Error StopIteration;         // Indicates that the end of a sequence has been reached
 
 #ifdef __cplusplus
 }
