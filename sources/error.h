@@ -31,10 +31,6 @@
 extern "C" {
 #endif
 
-#if !(defined(__GNUC__) || defined(__clang__))
-__attribute__(...)
-#endif
-
 /**
  * Represents errors that may occur at runtime.
  * The lifetime of every error is the whole program duration.
@@ -49,7 +45,7 @@ struct Error {
  * @attention must be used in the global scope (outside functions bodies) to ensure the proper lifetime for the error.
  */
 #define Error_define(msg) \
-    ((const struct Error *)(&((const struct Error) {.message=(msg)})))
+    ((const struct Error *) (&((const struct Error) {.message=(msg)})))
 
 /**
  * Built-in errors
